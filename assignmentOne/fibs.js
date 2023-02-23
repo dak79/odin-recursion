@@ -4,7 +4,7 @@
  * Using an example input of 8, this method should return the array
  * [0, 1, 1, 2, 3, 5, 8, 13].
  * @param {Number} n - Integer
- * @returns {Array} Fibonacci Sequence of that number
+ * @returns {Array} Fibonacci Sequence 
  */
 function fibs(n) {
   const sequence = [];
