@@ -1,50 +1,32 @@
 function mergeSort(arr) {
-  if (arr.length < 1) {
-    console.log("This array is empty");
-    return;
-  }
+  const length = arr.length;
 
-  if (!Array.isArray(arr)) {
-    console.log("Please enter an array");
-    return;
-  }
+  if (length <= 1) return arr;
 
-  if (arr.length === 1) return arr;
-
-  const mid = Math.floor(arr.length / 2);
+  const mid = Math.floor(length / 2);
   const left = arr.slice(0, mid);
-  const right = arr.slice(mid, arr.length);
+  const right = arr.slice(mid, length);
 
   return merge(mergeSort(left), mergeSort(right));
 }
 
-function merge(left, right) {
+function merge(leftArr, rightArr) {
   const sortedArray = [];
 
-  let i = 0;
-  let j = 0;
+  let leftIndex = 0;
+  let rightIndex = 0;
 
-  while (i < left.length && j < right.length) {
-    if (left[i] < right[j]) {
-      sortedArray.push(left[i]);
-      i++;
-    } else {
-      sortedArray.push(right[j]);
-      j++;
-    }
+  while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
+    leftArr[leftIndex] < rightArr[rightIndex]
+      ? sortedArray.push(leftArr[leftIndex++])
+      : sortedArray.push(rightArr[rightIndex++]);
   }
 
-  while (i < left.length) {
-    sortedArray.push(left[i]);
-    i++;
-  }
-
-  while (j < right.length) {
-    sortedArray.push(right[j]);
-    j++;
-  }
-
-  return sortedArray;
+  return [
+    ...sortedArray,
+    ...leftArr.slice(leftIndex),
+    ...rightArr.slice(rightIndex),
+  ];
 }
 
 // TEST
@@ -59,11 +41,6 @@ d = [2, 1];
 e = [0];
 
 f = [];
-
-g = {
-  name: "John",
-  age: 21,
-};
 
 const resultA = mergeSort(a);
 if (resultA)
@@ -83,6 +60,3 @@ if (resultE)
 const resultF = mergeSort(f);
 if (resultF)
   console.log(`Test 6. Array = [ ${f} ] - Sorted Array = [ ${resultF} ]`);
-const resultG = mergeSort(g);
-if (resultG)
-  console.log(`Test 7. Array = [ ${g} ] - Sorted Array = [ ${resultG} ]`);
