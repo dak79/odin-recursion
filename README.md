@@ -9,7 +9,9 @@ and space complexity of algorithm.
 
 ## Technologies
 
-JavaScript, npm, git.
+- JavaScript
+- Npm
+- Git
 
 ## Assignments
 
